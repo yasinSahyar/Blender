@@ -1,11 +1,7 @@
-/* src/style.css dosyasının içeriği */
 body {
     margin: 0;
-    overflow: hidden; /* Kaydırmayı engeller */
-    background-color: #242424; /* Varsayılan arka plan, ancak Three.js bunu ezecektir */
+    overflow: hidden;
 }
-
-/* Three.js'in oluşturduğu Canvas'ın tüm ekranı kaplamasını sağlar */
 canvas {
     display: block;
 }
