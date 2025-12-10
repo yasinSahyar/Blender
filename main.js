@@ -44,7 +44,7 @@ loader.setDRACOLoader(dracoLoader);
 
 
 loader.load(
-  '/models/world.glb', // 3. YOL DÜZELTİLDİ: Vercel için kök dizinle (/) başlar ve 'public' kullanılmaz. 
+  '/world.glb', // 3. YOL DÜZELTİLDİ: Vercel için kök dizinle (/) başlar ve 'public' kullanılmaz. 
   (gltf) => {
     
     // Modelin ölçeği çok büyükse küçült (opsiyonel ama iyi uygulama)
