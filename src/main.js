@@ -1,10 +1,10 @@
-// Bu kod, artık src/main.js olarak kullanılacaktır.
+// Bu satırı ekleyerek temizlenmiş CSS'i yüklüyoruz:
+import './style.css' 
+
 import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader.js'; 
-
-// ⚠️ Not: Eğer Three.js Canvas'ı HTML'inizde varsa, buradaki document.body.appendChild satırını kaldırın.
 
 const scene = new THREE.Scene();
 
@@ -15,12 +15,14 @@ const camera = new THREE.PerspectiveCamera(
   0.1,
   1000
 );
+// Kamera pozisyonunu modele yakın bir başlangıç noktasına ayarlıyoruz
 camera.position.set(2, 3, 5); 
 
 // Renderer Ayarları
 const renderer = new THREE.WebGLRenderer({ antialias: true });
 renderer.setSize(window.innerWidth, window.innerHeight);
 renderer.setPixelRatio(window.devicePixelRatio);
+// Arka plan rengi
 renderer.setClearColor(0x87CEEB); 
 document.body.appendChild(renderer.domElement);
 
@@ -43,13 +45,14 @@ loader.setDRACOLoader(dracoLoader);
 
 
 loader.load(
-  '/world.glb', // KÖK YOL KESİNLİKLE DOĞRU
+  '/world.glb', // KESİN YOL
   (gltf) => {
     
     gltf.scene.scale.set(0.5, 0.5, 0.5); 
     
     scene.add(gltf.scene);
 
+    // Kontrol hedefi
     controls.target.set(0, 0, 0); 
     
     console.log('Model başarıyla yüklendi ve sahneye eklendi.');
