@@ -9,11 +9,5 @@
         }
       ]
     }
-  ],
-  "rewrites": [
-    {
-      "source": "/world.glb",
-      "destination": "/world.glb"
-    }
   ]
 }

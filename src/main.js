@@ -1,13 +1,16 @@
 // Bu dosya src/main.js olarak kullanılacaktır.
 
-// Temizlik için CSS'i yüklüyoruz (tarayıcı kenar boşluklarını sıfırlar)
+// CSS temizliğini entegre ediyoruz (Ekranı doldurmak için hayati)
 import './style.css' 
+
+// 🚨 KRİTİK DÜZELTME: Vite'ın /public/world.glb dosyasının URL'sini yüklemesini zorluyoruz
+// Bu, Vercel'deki Content-Type hatasını atlatmaya yardımcı olur.
+import modelUrl from '/world.glb'; 
 
 import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
-// DRACO KODU KALDIRILMIŞTIR.
-
+// DRACO İLE İLGİLİ KOD KALDIRILMIŞTIR.
 
 const scene = new THREE.Scene();
 
@@ -18,14 +21,13 @@ const camera = new THREE.PerspectiveCamera(
   0.1,
   1000
 );
-// Kamera pozisyonunu modele yakın ayarlıyoruz
 camera.position.set(2, 3, 5); 
 
 // Renderer Ayarları
 const renderer = new THREE.WebGLRenderer({ antialias: true });
 renderer.setSize(window.innerWidth, window.innerHeight);
 renderer.setPixelRatio(window.devicePixelRatio);
-renderer.setClearColor(0x87CEEB); // Mavi Arka Plan
+renderer.setClearColor(0x87CEEB); 
 document.body.appendChild(renderer.domElement);
 
 // Işıklar
@@ -42,15 +44,13 @@ const loader = new GLTFLoader();
 
 
 loader.load(
-  '/world.glb', // KESİN KÖK DİZİN YOLU
+  modelUrl, // 🚨 Artık '/world.glb' değil, Vite'ın URL'i kullanılıyor
   (gltf) => {
     
-    // Modelin ölçeği
     gltf.scene.scale.set(0.5, 0.5, 0.5); 
     
     scene.add(gltf.scene);
 
-    // Kontrol hedefi
     controls.target.set(0, 0, 0); 
     
     console.log('Model başarıyla yüklendi: Sunucu sorunu çözüldü!');

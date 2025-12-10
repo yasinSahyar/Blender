@@ -1,7 +1,10 @@
+/* src/style.css dosyasının içeriği */
 body {
     margin: 0;
-    overflow: hidden;
+    overflow: hidden; /* Kaydırmayı engeller */
 }
+
+/* Three.js'in oluşturduğu Canvas'ın tüm ekranı kaplamasını sağlar */
 canvas {
     display: block;
 }
