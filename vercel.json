@@ -1,22 +1,19 @@
 {
   "headers": [
     {
-      "source": "/(.*)\\.glb",
+      "source": "/world.glb",
       "headers": [
         {
           "key": "Content-Type",
           "value": "model/gltf-binary"
         }
       ]
-    },
+    }
+  ],
+  "rewrites": [
     {
-      "source": "/(.*)\\.js",
-      "headers": [
-        {
-          "key": "Content-Type",
-          "value": "application/javascript"
-        }
-      ]
+      "source": "/world.glb",
+      "destination": "/world.glb"
     }
   ]
 }

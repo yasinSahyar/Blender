@@ -6,7 +6,7 @@ import './style.css'
 import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
-// import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader.js'; // DRACO SİLİNDİ!
+// DRACO KODU KALDIRILMIŞTIR.
 
 
 const scene = new THREE.Scene();
@@ -40,11 +40,9 @@ scene.add(dirLight);
 // Yükleyici
 const loader = new GLTFLoader();
 
-// !!! DRACO İLE İLGİLİ KOD BLOĞU TAMAMEN KALDIRILDI !!!
-
 
 loader.load(
-  './world.glb', // GÖRECELİ YOL DENEMESİ (En güvenilir Vercel yolu)
+  '/world.glb', // KESİN KÖK DİZİN YOLU
   (gltf) => {
     
     // Modelin ölçeği
@@ -55,13 +53,13 @@ loader.load(
     // Kontrol hedefi
     controls.target.set(0, 0, 0); 
     
-    console.log('Model başarıyla yüklendi: Draco olmadan!');
+    console.log('Model başarıyla yüklendi: Sunucu sorunu çözüldü!');
   },
   (xhr) => {
     console.log((xhr.loaded / xhr.total) * 100 + '% yüklendi');
   },
   (error) => {
-    console.error('Model yüklenemedi. Dosya yolu veya sıkıştırma sorunu var.', error);
+    console.error('Model yüklenemedi. Sunucu hatası hala mevcut (HTML dönüyor).', error);
   }
 );
 
