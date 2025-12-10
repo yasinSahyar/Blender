@@ -31,7 +31,7 @@ scene.add(dirLight);
 // Yükleyici
 const loader = new GLTFLoader();
 loader.load(
-  './public/modle/world.glb', // Blender'dan export ettiğin modelin yolu
+  './public/models/world.glb', // Blender'dan export ettiğin modelin yolu
   (gltf) => {
     scene.add(gltf.scene);
   },
