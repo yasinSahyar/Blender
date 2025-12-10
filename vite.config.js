@@ -1,8 +1,13 @@
-import { defineConfig } from 'vite';
+import { defineConfig } from 'vite'
+import { fileURLToPath } from 'url'
+import { resolve } from 'path'
 
-// https://vitejs.dev/config/
 export default defineConfig({
-  server: {
-    open: true, // otomatik tarayıcı açılır
-  },
-});
+  // Bu ayar, public klasöründeki varlıkların kök dizinle eşleşmesini sağlar.
+  base: '/', 
+  
+  build: {
+    // Vite'a, model dosyalarını doğrudan URL olarak ele almasını söyle
+    assetsInclude: ['**/*.glb']
+  }
+})

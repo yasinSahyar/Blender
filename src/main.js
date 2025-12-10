@@ -1,16 +1,11 @@
 // Bu dosya src/main.js olarak kullanılacaktır.
 
-// CSS temizliğini entegre ediyoruz (Ekranı doldurmak için hayati)
 import './style.css' 
-
-// 🚨 KRİTİK DÜZELTME: Vite'ın /public/world.glb dosyasının URL'sini yüklemesini zorluyoruz
-// Bu, Vercel'deki Content-Type hatasını atlatmaya yardımcı olur.
-import modelUrl from '/world.glb'; 
-
 import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
-// DRACO İLE İLGİLİ KOD KALDIRILMIŞTIR.
+// DRACO KODU KALDIRILMIŞTIR.
+
 
 const scene = new THREE.Scene();
 
@@ -44,7 +39,7 @@ const loader = new GLTFLoader();
 
 
 loader.load(
-  modelUrl, // 🚨 Artık '/world.glb' değil, Vite'ın URL'i kullanılıyor
+  '/world.glb', // 🚨 ARTIK VITE BU YOLU TANIMLAYACAK
   (gltf) => {
     
     gltf.scene.scale.set(0.5, 0.5, 0.5); 
@@ -53,13 +48,13 @@ loader.load(
 
     controls.target.set(0, 0, 0); 
     
-    console.log('Model başarıyla yüklendi: Sunucu sorunu çözüldü!');
+    console.log('Model başarıyla yüklendi: Build hatası çözüldü!');
   },
   (xhr) => {
     console.log((xhr.loaded / xhr.total) * 100 + '% yüklendi');
   },
   (error) => {
-    console.error('Model yüklenemedi. Sunucu hatası hala mevcut (HTML dönüyor).', error);
+    console.error('Model yüklenemedi. Sunucu hatası hala mevcut.', error);
   }
 );
 
